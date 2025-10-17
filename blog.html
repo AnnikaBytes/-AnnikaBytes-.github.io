@@ -1,26 +1,110 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Annika's Website</title>
-  </head>
-  <body>
-    <nav class = "navbar">
-      <h1 class = "AY">
-        <a href="index.html">Annika Yaworski</a>
-      </h1>
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-      <main>
-        <div class="page-title"><h1>Blog</h1></div>
-      </main>
-    <footer> class = "footer"
-      © 2023 <Annika's Website> | All Rights Reserved
-    </footer>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- optional serif for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --accent:#d6b5be;
+      --maxw:900px;
+      --radius:8px;
+    }
+
+    html,body{margin:0}
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* navbar */
+    .navbar{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:12px 16px;
+      border-bottom:1px solid #e5e7eb;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .AY{ margin:0; font:700 18px/1 Merriweather, Georgia, "Times New Roman", serif; }
+    .AY a{ color:inherit; text-decoration:none; }
+
+    .nav-list{ list-style:none; display:flex; gap:10px; margin:0; padding:0; }
+    .nav-list a{
+      color:inherit; text-decoration:none; padding:6px 10px; border-radius:6px;
+    }
+    .nav-list a:hover{ text-decoration:underline; }
+    .nav-list a[aria-current="page"]{ background:#f3f4f6; }
+
+    /* layout */
+    main{ max-width:var(--maxw); margin:24px auto; padding:0 16px; }
+
+    .page-title h1{
+      font:700 clamp(24px, 3vw, 36px)/1.2 Merriweather, Georgia, "Times New Roman", serif;
+      margin:0 0 12px;
+    }
+
+    /* blog container */
+    .blog{ display:block; }
+
+    /* example blog post style */
+    .post{
+      border:1px solid #e5e7eb;
+      border-radius:var(--radius);
+      padding:16px;
+      margin:16px 0;
+    }
+    .post h1, .post h2{
+      margin:0 0 8px;
+      font:700 22px/1.3 Merriweather, Georgia, "Times New Roman", serif;
+    }
+    .post .date{ color:var(--muted); font-size:14px; margin-top:8px; }
+    .post p{ margin:8px 0; }
+
+    footer{
+      max-width:var(--maxw);
+      margin:24px auto 40px;
+      padding:0 16px;
+      color:var(--muted);
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <h1 class="AY"><a href="index.html">Annika Yaworski</a></h1>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html" aria-current="page">Blog</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-title"><h1>Blog</h1></div>
+
+    <!-- Target container for dynamic blogs -->
+    <div id="blog-container" class="blog"></div>
+  </main>
+
+  <footer class="footer">
+    © <span id="year"></span> Annika's Website • All Rights Reserved
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script src="./src/blog.js"></script>
+</body>
 </html>

@@ -1,39 +1,163 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Annika's Website</title>
+    <meta charset="utf-8" />
+    <title>Annika's Website — Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Optional serif for headings (remove if you want only system fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+      :root{
+        --bg:#fff;
+        --ink:#1f2937;       /* near-black */
+        --muted:#6b7280;     /* gray for meta text */
+        --accent:#d6b5be;    /* soft blush, used lightly */
+        --maxw:900px;
+        --radius:8px;
+      }
+
+      html,body{margin:0}
+      body{
+        background:var(--bg);
+        color:var(--ink);
+        font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      /* navbar */
+      .navbar{
+        max-width:var(--maxw);
+        margin:0 auto;
+        padding:12px 16px;
+        border-bottom:1px solid #e5e7eb;
+        display:flex; align-items:center; justify-content:space-between; gap:12px;
+      }
+      .AY{ margin:0; font:700 18px/1 Merriweather, Georgia, "Times New Roman", serif; }
+      .AY a{ color:inherit; text-decoration:none; }
+      .nav-list{ list-style:none; display:flex; gap:10px; margin:0; padding:0; }
+      .nav-list a{ color:inherit; text-decoration:none; padding:6px 10px; border-radius:6px; }
+      .nav-list a:hover{ text-decoration:underline; }
+      .nav-list a[aria-current="page"]{ background:#f3f4f6; }
+
+      /* layout */
+      main{ max-width:var(--maxw); margin:24px auto; padding:0 16px; }
+      .page-title h1{
+        font:700 clamp(24px, 3vw, 36px)/1.2 Merriweather, Georgia, "Times New Roman", serif;
+        margin:0 0 12px;
+      }
+
+      /* form wrapper matches section card style */
+      .section{
+        border:1px solid #e5e7eb;
+        border-radius:var(--radius);
+        padding:16px;
+        background:#fff;
+        margin:16px 0;
+        max-width:720px;
+      }
+
+      /* form elements */
+      form{ display:grid; gap:12px; }
+      label{ font-weight:600; }
+      input[type="text"], input[type="email"], textarea{
+        width:100%;
+        border:1px solid #e5e7eb;
+        border-radius:6px;
+        padding:10px 12px;
+        font:inherit; color:inherit; background:#fff;
+      }
+      input:focus, textarea:focus{
+        outline:none; border-color:#d6b5be;
+        box-shadow:0 0 0 3px rgba(214,181,190,.25);
+      }
+
+      /* button */
+      .btn{
+        display:inline-block;
+        border:1px solid #e5e7eb;
+        border-radius:999px;
+        background:#fafafa;
+        padding:10px 14px;
+        font-weight:700;
+        cursor:pointer;
+      }
+      .btn:hover{ background:#f5f5f5; }
+
+      /* footer */
+      .footer{
+        max-width:var(--maxw);
+        margin:24px auto 40px;
+        padding:0 16px;
+        color:var(--muted);
+        font-size:14px;
+      }
+    </style>
   </head>
+
   <body>
-    <nav class = "navbar">
-      <h1 class = "AY">
-        <a href="index.html">Annika Yaworski</a>
-      </h1>
+    <nav class="navbar">
+      <h1 class="AY"><a href="index.html">Annika Yaworski</a></h1>
       <ul class="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="resume.html">Resume</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
       </ul>
     </nav>
-      <main>
-        <div class="page-title"><h1>Contact</h1></div>
-        <form id="contact-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
+    <main>
+      <div class="page-title"><h1>Contact</h1></div>
 
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <section class="section">
+        <!-- Replace YOUR_EMAIL_HERE with your real email -->
+        <form id="contact-form" aria-label="Contact form">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
 
-      <input type="submit" value="Submit" />
-    </form>
-      </main>
-    <footer class = "footer">
-      © 2023 <Annika's Website> | All Rights Reserved
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn">Send</button>
+        </form>
+        <p class="hint" style="color:#6b7280; font-size:14px; margin-top:8px;">
+          This will open your email app with a pre-filled message.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      © 2025 Annika's Website • All Rights Reserved
     </footer>
+
+    <script>
+      // minimal mailto submit (no backend)
+      document.getElementById('contact-form').addEventListener('submit', function(e){
+        e.preventDefault();
+        const to = 'YOUR_EMAIL_HERE'; // e.g., 'annika@example.com'
+        const name = document.getElementById('name').value.trim();
+        const from = document.getElementById('email').value.trim();
+        const msg = document.getElementById('message').value.trim();
+
+        const subject = encodeURIComponent('Contact from ' + name);
+        const body = encodeURIComponent(
+          'Name: ' + name + '\\n'
+          + 'Email: ' + from + '\\n\\n'
+          + msg
+        );
+
+        window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+      });
+    </script>
   </body>
 </html>

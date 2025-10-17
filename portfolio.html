@@ -1,37 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Annika's Website</title>
+    <meta charset="utf-8" />
+    <title>Annika's Website — Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Optional serif for headings (remove to use only system fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+      :root{
+        --bg:#fff;
+        --ink:#1f2937;
+        --muted:#6b7280;
+        --accent:#d6b5be;
+        --maxw:900px;
+        --radius:8px;
+      }
+      html,body{margin:0}
+      body{
+        background:var(--bg);
+        color:var(--ink);
+        font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      /* navbar */
+      .navbar{
+        max-width:var(--maxw);
+        margin:0 auto;
+        padding:12px 16px;
+        border-bottom:1px solid #e5e7eb;
+        display:flex; align-items:center; justify-content:space-between; gap:12px;
+      }
+      .AY{ margin:0; font:700 18px/1 Merriweather, Georgia, "Times New Roman", serif; }
+      .AY a{ color:inherit; text-decoration:none; }
+      .nav-list{ list-style:none; display:flex; gap:10px; margin:0; padding:0; }
+      .nav-list a{ color:inherit; text-decoration:none; padding:6px 10px; border-radius:6px; }
+      .nav-list a:hover{ text-decoration:underline; }
+      .nav-list a[aria-current="page"]{ background:#f3f4f6; }
+
+      /* layout */
+      main{ max-width:var(--maxw); margin:24px auto; padding:0 16px; }
+      .page-title h1{
+        font:700 clamp(24px, 3vw, 36px)/1.2 Merriweather, Georgia, "Times New Roman", serif;
+        margin:0 0 12px;
+      }
+
+      /* projects grid */
+      .projects{
+        display:grid;
+        grid-template-columns: 1fr;
+        gap:16px;
+      }
+      @media (min-width:720px){
+        .projects{ grid-template-columns: 1fr 1fr; }
+      }
+
+      .project{
+        border:1px solid #e5e7eb;
+        border-radius:var(--radius);
+        padding:12px;
+        background:#fff;
+        display:grid; gap:10px;
+      }
+      .project img{
+        width:100%; height:auto; display:block; border-radius:6px; border:1px solid #eef2f6;
+      }
+      .project-name{
+        margin:0; font:700 18px/1.3 Merriweather, Georgia, "Times New Roman", serif;
+      }
+      .project-description{ margin:6px 0 8px; color:var(--muted); }
+      .project a{ color:inherit; }
+      .project a:hover{ text-decoration:underline; }
+
+      /* footer */
+      .footer{
+        max-width:var(--maxw);
+        margin:24px auto 40px; padding:0 16px;
+        color:var(--muted); font-size:14px;
+      }
+    </style>
   </head>
+
   <body>
-    <nav class = "navbar">
-      <h1 class = "AY">
-        <a href="index.html">Annika Yaworski</a>
-      </h1>
+    <nav class="navbar">
+      <h1 class="AY"><a href="index.html">Annika Yaworski</a></h1>
       <ul class="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
         <li><a href="resume.html">Resume</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-      <main>
-        <div class="page-title"><h1>Portfolio</h1></div>
-        <div> class = "projects">
-          <div class="project">
-      <a href="index.html">
-        <img src="images/websiteScreenshot.png" alt="Screenshot of my personal website" />
-      </a>
-      <div class="project-details">
-        <p class="project-name">Annika's Website</p>
-        <p class="project-description">A website I built to share my background, interests, and projects in software engineering.</p>
-        <a href="index.html">Learn More</a>
-      </div>
-    </div>
-      <main>
-    <footer class = "footer">
-      © 2023 <Annika's Website> | All Rights Reserved
-    </footer>
-  </body>
-</html>
+
+    <main>
+      <div class="page-title"><h1>Portfolio</h1></div>
+
+      <section class="projects">
+        <!-- Project 1 -->
+        <article class="project">
